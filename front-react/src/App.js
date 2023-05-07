@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import FormHelperText from '@mui/material/FormHelperText';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { useState } from 'react';
+import useWebSocket from 'react-use-websocket';
 const theme = createTheme({
   typography: {
     // In Chinese and Japanese the characters are usually larger,
@@ -18,8 +19,14 @@ const theme = createTheme({
     htmlFontSize: 60,
   },
 });
+const WS_URL = 'ws://localhost:8080';
 
 function App() {
+  useWebSocket(WS_URL, {
+    onOpen: () => {
+      console.log('WebSocket connection established.');
+    }
+  });
   const [message, setMessage] = useState('');
 
   const [updated, setUpdated] = useState(message);
