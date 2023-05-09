@@ -1,11 +1,10 @@
 .App {
   text-align: center;
+  
 }
 html {
+  background-image: url("./gradient-background-4096x2652-10786.jpg");
   font-size: 300%; /* 62.5% of 16px = 10px */
-}
-img {
-  //visibility: hidden;
 }
 .Myt{
   text-align: center;
