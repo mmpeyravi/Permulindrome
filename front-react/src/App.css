@@ -4,6 +4,9 @@
 html {
   font-size: 300%; /* 62.5% of 16px = 10px */
 }
+img {
+  //visibility: hidden;
+}
 .Myt{
   text-align: center;
   padding: 170px 0 80px;

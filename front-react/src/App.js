@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './check.gif';
 import './App.css';
 import React from 'react'
 import { Input } from './components/Input.js';
@@ -20,71 +20,66 @@ const theme = createTheme({
     htmlFontSize: 60,
   },
 });
-const WS_URL = 'ws://localhost:8080';
 const client = new W3CWebSocket('ws://localhost:8080');
 
 let payam='';
-
+let condi='2';
 
 function App() {
-  const [message, setMessage] = useState('');
 
+  const [message, setMessage] = useState('');
   const [updated, setUpdated] = useState(message);
+
+  const [payam, setPayam] = useState('');
+  const [condi, setCondi] = useState('');
 
   client.onopen = () => {
     console.log('WebSocket Client Connected');
   };
-
   client.onmessage = (serverData) => {
-    payam=serverData.data;
-    
-  };
-
-
-  useWebSocket(WS_URL, {
-    onOpen: () => {
-      console.log('WebSocket connection established.');
+    setPayam(serverData.data);
+    if (serverData.data==='true') {
+      setCondi('0');
+    }else{
+      setCondi('1');
     }
-  });
-
-
-
-
-
-
-
-
-
-
-  
+    //payam=serverData.data;
+  };
 
   const handleChange = (event) => {
     setMessage(event.target.value);
-
-    client.send(event.target.value);
-
+    setCondi('2')
+    //client.send(event.target.value);
   };
 
   const handleClick = () => {
     // 👇 "message" stores input field value
     setUpdated(message);
+    client.send(message);
   };
-
+//const x=document.getElementById('logo').set
   return (
     <div className="App">
       <h1 id='hello'>Message: {payam}</h1>
-
-      <div>
-        <TextField
-          name="message" justifyContent="center" className="Myt" id="outlined-basic" label="رشته مورد نظر" sx={{
+      <TextField name="message" className="Myt" id="outlined-basic" label="your string" sx={{
             width: 500,
             maxWidth: '100%',
           }} onChange={handleChange}
           value={message} variant="outlined" />
-      </div>
-
-      <Button onClick={handleClick} size='500' variant="contained">Contained</Button>
-
+      <Button onClick={handleClick} variant="contained">Go!</Button>
+      <br/>
+      <br/>
+      {condi==='0' ? (
+        <img src={require('./check.gif')} width={150} height={150} alt="loading..." />
+      ) :condi==='1'?(
+        <img src={require('./cross.gif')} width={150} height={150} alt="loading..." />
+      ):(
+        <div></div>
+      )}
+      {/* <div visibility='hidden'>
+        <img visibility='hidden' src={logo} width={150} height={150} alt="loading..." />
+      </div> */}
+      
     </div>
   );
 }
