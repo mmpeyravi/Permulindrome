@@ -3,9 +3,18 @@
   
 }
 html {
-  background-image: url("./gradient-background-4096x2652-10786.jpg");
+  background-image: url("./white\ wallp.jpg");
+  background-size: cover;
   font-size: 300%; /* 62.5% of 16px = 10px */
 }
+#perm{
+  background-image: url("./permu_prev_ui.png");
+}
+/* Button{
+  scale: 120%;
+  padding: 200%;
+  margin: 200px;
+} */
 .Myt{
   text-align: center;
   padding: 170px 0 80px;

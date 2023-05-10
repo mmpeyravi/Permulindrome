@@ -60,19 +60,26 @@ function App() {
 //const x=document.getElementById('logo').set
   return (
     <div className="App">
-      <h1 id='hello'>Message: {payam}</h1>
+      {/* <h1 id='hello'>Message: {payam}</h1> */}
+      <div id='perm'></div>
+      <br/>
+      <br/>
+      <div>
+      <img src={require('././permu_prev_ui.png')} width={1000} height={450} alt="loading..." />
+      </div>
       <TextField name="message" className="Myt" id="outlined-basic" label="your string" sx={{
             width: 500,
             maxWidth: '100%',
           }} onChange={handleChange}
           value={message} variant="outlined" />
+      <br/>
       <Button onClick={handleClick} variant="contained">Go!</Button>
       <br/>
       <br/>
       {condi==='0' ? (
-        <img src={require('./check.gif')} width={150} height={150} alt="loading..." />
+        <img src={require('./check2.gif')} width={150} height={150} alt="loading..." />
       ) :condi==='1'?(
-        <img src={require('./cross.gif')} width={150} height={150} alt="loading..." />
+        <img src={require('./cross2.gif')} width={150} height={150} alt="loading..." />
       ):(
         <div></div>
       )}
